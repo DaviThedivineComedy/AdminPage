@@ -6,11 +6,11 @@ function supplierId() {
 }
 
 const supplierCategory = [
-  "materials",
-  "services",
-  "logistics",
-  "IT",
-  "others",
+  "materiais",
+  "serviços",
+  "logistica",
+  "Ti",
+  "outros",
 ];
 
 export default function SupplierCrud() {
@@ -45,7 +45,7 @@ export default function SupplierCrud() {
   }
 
   function addSupplier() {
-    const newSupplier = { id: supplierId(), ...supplierForm };
+    const newSupplier = { id: supplierId(), ...supplierForm, id: supplierId() };
     setSupplierList([newSupplier, ...supplierList]);
     clearForm();
   }
@@ -77,46 +77,46 @@ export default function SupplierCrud() {
 
   return (
     <div className="card crud">
-      <h2 className="crud__title">Supplier Management</h2>
-      <p className="crud__subtitle">Simple CRUD for supplier data</p>
+      <h2 className="crud__title">Gestão de Fornecedores</h2>
+      <p className="crud__subtitle">Crud simples para gestão de fornecedores</p>
 
       <form onSubmit={handleSubmit} className="crud__form">
         <div className="form-row">
           <div className="form-field">
-            <label className="label">Trade Name</label>
+            <label className="label">Nome fantasia</label>
             <input
               className="input"
               type="text"
               name="name"
               value={supplierForm.name}
               onChange={handleChange}
-              placeholder="e.g. Global Supplies Ltd."
+              placeholder="Global Supplies"
             />
           </div>
 
           <div className="form-field">
-            <label className="label">Corporate Name</label>
+            <label className="label">Nome de corporação</label>
             <input
               className="input"
               type="text"
               name="social"
               value={supplierForm.social}
               onChange={handleChange}
-              placeholder="e.g. Global Supplies Corporation"
+              placeholder="Global Supplies Corporation"
             />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-field">
-            <label className="label">Category</label>
+            <label className="label">Categoria</label>
             <select
               className="select"
               name="category"
               value={supplierForm.category}
               onChange={handleChange}
             >
-              <option value="">Select a category</option>
+              <option value="">escolha uma categoria</option>
               {supplierCategory.map((cat) => (
                 <option key={cat} value={cat}>
                   {cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -133,7 +133,7 @@ export default function SupplierCrud() {
               name="cnpj"
               value={supplierForm.cnpj}
               onChange={handleChange}
-              placeholder="e.g. 12.345.678/0001-90"
+              placeholder="12.345.678/0001-90"
             />
           </div>
         </div>
@@ -147,29 +147,29 @@ export default function SupplierCrud() {
               name="email"
               value={supplierForm.email}
               onChange={handleChange}
-              placeholder="e.g. contact@supplier.com"
+              placeholder="contact@supplier.com"
             />
           </div>
 
           <div className="form-field">
-            <label className="label">Phone</label>
+            <label className="label">telefone</label>
             <input
               className="input"
               type="text"
               name="phone"
               value={supplierForm.phone}
               onChange={handleChange}
-              placeholder="e.g. (11) 91234-5678"
+              placeholder="(11) 91234-5678"
             />
           </div>
         </div>
 
         <div className="actions">
           <button type="submit" className="btn btn-primary">
-            {isEditing ? "Update Supplier" : "Add Supplier"}
+            {isEditing ? "Editar fornecedor" : "Adcionar fornecedor"}
           </button>
           <button type="button" onClick={clearForm} className="btn btn-ghost">
-            Clear
+            Cancelar
           </button>
         </div>
       </form>
@@ -177,20 +177,20 @@ export default function SupplierCrud() {
       <table className="table">
         <thead>
           <tr>
-            <th className="th">Trade Name</th>
-            <th className="th">Corporate Name</th>
-            <th className="th">Category</th>
+            <th className="th">Nome fantasia</th>
+            <th className="th">Nome corporativo</th>
+            <th className="th">Categoria</th>
             <th className="th">CNPJ</th>
             <th className="th">Email</th>
-            <th className="th">Phone</th>
-            <th className="th">Actions</th>
+            <th className="th">Telefone</th>
+            <th className="th">ações</th>
           </tr>
         </thead>
         <tbody>
           {supplierList.length === 0 ? (
             <tr>
               <td className="td" colSpan={7}>
-                — No suppliers registered —
+                — Sem fornecedores registrados —
               </td>
             </tr>
           ) : (
@@ -214,7 +214,7 @@ export default function SupplierCrud() {
                       className="btn btn-small"
                       onClick={() => removeSupplier(s.id)}
                     >
-                      Remove
+                      Remover
                     </button>
                   </div>
                 </td>

@@ -37,12 +37,14 @@ export default function ClientCrud() {
   }
 
   function addClient() {
-    const newClient = { id: ClientID(), ...clientForm };
+    const newClient = { id: ClientID(), ...clientForm, id: ClientID() };
+    console.log(newClient)
     setClientList([newClient, ...clientList]);
     clearForm();
   }
 
   function startEdit(client) {
+    console.log(client)
     setClientForm(client);
   }
 
@@ -172,7 +174,7 @@ export default function ClientCrud() {
             </tr>
           ) : (
             clientList.map((cliente) => (
-              <tr>
+              <tr key={cliente.id}>
                 <th className="th">{cliente.name}</th>
                 <th className="th">{cliente.type}</th>
                 <th className="th">{cliente.documento}</th>
