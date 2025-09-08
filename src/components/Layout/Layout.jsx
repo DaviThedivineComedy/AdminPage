@@ -20,6 +20,9 @@ export default function Layout() {
           <NavLink to="/fornecedor" className={({isActive}) => `link ${isActive ? "active": ""}`}>
             Fornecedores
           </NavLink>
+          <NavLink to="/alunos" className={({isActive}) => `link ${isActive ? "active": ""}`}>
+            Alunos
+          </NavLink>
         </nav>
       </aside>
 
